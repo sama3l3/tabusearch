@@ -2,11 +2,42 @@ import java.io.*;
 import java.util.*;
 public class Read {
 
-    HashMap<Integer, List<Integer>> jobs= new LinkedHashMap<>();
-    HashMap<Integer, List<Integer>> map = new LinkedHashMap<>();
-    int lines = 0;
-    int machines = 0;
-    int n = 0;
+    private HashMap<Integer, List<Integer>> jobs= new LinkedHashMap<>();
+    private int lines = 0;
+    private int machines = 0;
+    private int n = 0;
+
+    public HashMap<Integer, List<Integer>> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(HashMap<Integer, List<Integer>> jobs) {
+        this.jobs = jobs;
+    }
+
+    public int getLines() {
+        return lines;
+    }
+
+    public void setLines(int lines) {
+        this.lines = lines;
+    }
+
+    public int getMachines() {
+        return machines;
+    }
+
+    public void setMachines(int machines) {
+        this.machines = machines;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+    }
 
     public void read(String name) {
         if (name != null) {
@@ -15,7 +46,6 @@ public class Read {
                 String s = f.readLine();
                 String[] ss;
                 ss = s.split("[ ]");
-                //System.out.println(Arrays.toString(ss));
                 lines = Integer.parseInt(ss[0]);
                 machines = Integer.parseInt(ss[1]);
                 n = Integer.parseInt(ss[2]) * 2 * machines * lines;
@@ -25,7 +55,6 @@ public class Read {
                 for(int i=0;i<lines;i++) {
                     s = f.readLine();
                     String[] str = s.split("\t+");
-                    System.out.println(Arrays.toString(s.split("\t+")));
                     int key;
                     int value;
 
@@ -43,8 +72,9 @@ public class Read {
                     }
                 }
                 for (int i : jobs.keySet()) {
-                    System.out.print(i + " ");
+                    System.out.println("machine " + i);
                     System.out.println(jobs.get(i).toString());
+                    System.out.println("********************************************************************************************************************************************************************************************************************************************************************************");
                 }
             } catch (FileNotFoundException e) {
                 //e.printStackTrace();
