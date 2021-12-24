@@ -48,8 +48,8 @@ public class Read {
                 ss = s.split("[ ]");
                 lines = Integer.parseInt(ss[0]);
                 machines = Integer.parseInt(ss[1]);
-                n = Integer.parseInt(ss[2]) * 2 * machines * lines;
-                System.out.println(n);
+                n = Integer.parseInt(ss[2]) * machines * lines;
+                System.out.println("total jobs: " + n);
                 f.readLine();
                 ArrayList<Integer> strings = new ArrayList<>();
                 for(int i=0;i<lines;i++) {

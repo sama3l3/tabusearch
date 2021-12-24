@@ -30,7 +30,7 @@ public class TabuSearch {
                     }
                 }
             }
-            System.out.println("elements in HashMap before: "+ jobs);
+            System.out.println("elements in HashMap after: "+ jobs);
             int count=0;
             for (int i : jobs.keySet()) {
                 count+=jobs.get(i).size();
