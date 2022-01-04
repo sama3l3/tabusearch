@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class TabuSearch {
-    private Queue<Integer> list= new LinkedList<>();
+    private Queue<Integer> list= new ArrayDeque<>();
     private HashMap<Integer, List<Integer>> jobs;
     private boolean flag=false;
     public TabuSearch(HashMap<Integer, List<Integer>> jobs) {
