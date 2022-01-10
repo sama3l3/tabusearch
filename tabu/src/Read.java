@@ -2,7 +2,19 @@ import java.io.*;
 import java.util.*;
 public class Read {
 
+    FileWriter myWriter;
+
+    {
+        try {
+            myWriter = new FileWriter("res.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     private HashMap<Integer, List<Integer>> jobs= new LinkedHashMap<>();
+
     private int lines = 0;
     private int machines = 0;
     private int n = 0;
@@ -46,22 +58,28 @@ public class Read {
                 String s = f.readLine();
                 String[] ss;
                 ss = s.split("[ ]");
+
                 lines = Integer.parseInt(ss[0]);
                 machines = Integer.parseInt(ss[1]);
                 n = Integer.parseInt(ss[2]) * machines * lines;
+
                 System.out.println("total jobs: " + n);
+                myWriter.write("Maximize\n");
                 f.readLine();
-                ArrayList<Integer> strings = new ArrayList<>();
+
                 for(int i=0;i<lines;i++) {
+
                     s = f.readLine();
                     String[] str = s.split("\t+");
                     int key;
                     int value;
 
                     for (int j = 1; j < str.length; j += 2) {
+
                         List<Integer> l = new ArrayList<>();
                         key=Integer.parseInt(str[j]);
                         value=Integer.parseInt(str[j+1]);
+
                         if(!jobs.containsKey(key)) {
                             l.add(value);
                             jobs.put(key, l);
@@ -71,11 +89,23 @@ public class Read {
                         }
                     }
                 }
+
                 for (int i : jobs.keySet()) {
+
                     System.out.println("machine " + i);
                     System.out.println(jobs.get(i).toString());
                     System.out.println("********************************************************************************************************************************************************************************************************************************************************************************");
+
+                    /*
+                    per il file res
+                     */
+                    myWriter.write("x_"+ i + " * " + jobs.get(i).toString() + "\n");
+                    myWriter.write("+" + "\n"); //stampa un + di troppo alla fine
+
+
                 }
+                myWriter.close(); //close filewriter
+
             } catch (FileNotFoundException e) {
                 //e.printStackTrace();
                 System.out.println("File not found");
