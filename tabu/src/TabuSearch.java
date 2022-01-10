@@ -15,10 +15,7 @@ public class TabuSearch {
     }
     public void tabuList(int j, int k){
         Element el= new Element(j,k);
-        if(tabulist.size()<1000) {
-            System.out.println("ok");
-        }
-        else {
+        if(tabulist.size()>10) {
             tabulist.poll();
         }
         tabulist.add(el);
