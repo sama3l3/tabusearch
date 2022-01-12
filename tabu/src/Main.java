@@ -62,14 +62,17 @@ public class Main extends JFrame {
             TabuSearch t= new TabuSearch(r.getJobs());
             t.localopt();
             try {
-                System.out.println(System.getProperty("os.name"));
-                String str = System.getProperty("os.name");
+                String str = System.getProperty("os.name").toLowerCase();
 
-                if(str.startsWith("Win"))
-                Runtime.getRuntime().exec("explorer.exe /select," + file.getPath()); //apre esplora risorse dopo aver elaborato
+                if(str.startsWith("win")) {
 
+                    Runtime.getRuntime().exec("explorer.exe /select," + file.getPath()); //apre esplora risorse dopo aver elaborato
+
+                }
                 else
-                Runtime.getRuntime().exec(new String[]{ String.valueOf(Path.of(System.getProperty("user.dir"))), file.getAbsolutePath() });
+                {
+                   Runtime.getRuntime().exec("nautilus " + System.getProperty("user.dir")); //ubuntu 20.4 LTS funziona
+                }
 
             } catch (IOException ex) {
                 ex.printStackTrace();
