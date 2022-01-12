@@ -6,7 +6,7 @@ import java.nio.file.Path;
 public class Main extends JFrame {
     private static File file;
     private static final Read r= new Read();
-    private static final Path path = Path.of(System.getProperty("user.home"));
+    private static final Path path = Path.of(System.getProperty("user.dir"));
 
     /*
         Componenti swing per grafica ( JFrame in stack senza griglia, per modificare
@@ -62,7 +62,15 @@ public class Main extends JFrame {
             TabuSearch t= new TabuSearch(r.getJobs());
             t.localopt();
             try {
+                System.out.println(System.getProperty("os.name"));
+                String str = System.getProperty("os.name");
+
+                if(str.startsWith("Win"))
                 Runtime.getRuntime().exec("explorer.exe /select," + file.getPath()); //apre esplora risorse dopo aver elaborato
+
+                else
+                Runtime.getRuntime().exec(new String[]{ String.valueOf(Path.of(System.getProperty("user.dir"))), file.getAbsolutePath() });
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
