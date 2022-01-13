@@ -64,7 +64,7 @@ public class Read {
                 n = Integer.parseInt(ss[2]) * machines * lines;
 
                 System.out.println("total jobs: " + n);
-                myWriter.write("Maximize\n");
+                myWriter.write("Minimize\n");
                 f.readLine();
 
                 for(int i=0;i<lines;i++) {
@@ -99,7 +99,7 @@ public class Read {
                     /*
                     per il file res
                      */
-                    myWriter.write("x_"+ i + " * " + jobs.get(i).toString() + "\n");
+                    myWriter.write("x_"+ i + " * " + jobs.get(i).get(0) + " +" + " x_"+ i + " * " + jobs.get(i).get(1) + " +" + " x_"+ i + " * " + jobs.get(i).get(2) + "\n");
                     myWriter.write("+" + "\n"); //stampa un + di troppo alla fine
 
 
