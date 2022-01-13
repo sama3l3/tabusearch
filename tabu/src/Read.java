@@ -91,19 +91,31 @@ public class Read {
                 }
 
                 for (int i : jobs.keySet()) {
-
                     System.out.println("machine " + i);
                     System.out.println(jobs.get(i).toString());
                     System.out.println("********************************************************************************************************************************************************************************************************************************************************************************");
 
                     /*
-                    per il file res
+                    per il file res, funzione obiettivo
                      */
                     myWriter.write("x_"+ i + " * " + jobs.get(i).get(0) + " +" + " x_"+ i + " * " + jobs.get(i).get(1) + " +" + " x_"+ i + " * " + jobs.get(i).get(2) + "\n");
-                    myWriter.write("+" + "\n"); //stampa un + di troppo alla fine
+                    if(i < machines-1) myWriter.write("+" + "\n"); //controllo per evitare di stampare un + di troppo
+                    else myWriter.write("\n"); //per formattazione cplex
 
 
                 }
+
+                /*
+                funzione subject to
+                 */
+                myWriter.write("Subject To\n");
+                for(int i : jobs.keySet()) {
+
+
+
+                }
+
+
                 myWriter.close(); //close filewriter
 
             } catch (FileNotFoundException e) {
