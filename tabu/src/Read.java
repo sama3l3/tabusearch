@@ -6,7 +6,7 @@ public class Read {
 
     {
         try {
-            myWriter = new FileWriter("res.txt");
+            myWriter = new FileWriter("res.lpt");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,7 +98,7 @@ public class Read {
                     /*
                     per il file res, funzione obiettivo
                      */
-                    myWriter.write("x_"+ i + " * " + jobs.get(i).get(0) + " +" + " x_"+ i + " * " + jobs.get(i).get(1) + " +" + " x_"+ i + " * " + jobs.get(i).get(2) + "\n");
+                    myWriter.write("x_"+ i + "*" + jobs.get(i).get(0) + " +" + " x_"+ i + "*" + jobs.get(i).get(1) + " +" + " x_"+ i + "*" + jobs.get(i).get(2) + "\n");
                     if(i < machines-1) myWriter.write("+" + "\n"); //controllo per evitare di stampare un + di troppo
                     else myWriter.write("\n"); //per formattazione cplex
 
@@ -110,10 +110,12 @@ public class Read {
                  */
                 myWriter.write("Subject To\n");
                 for(int i : jobs.keySet()) {
-
-
-
+                    int n = 0;
+                    myWriter.write(jobs.get(i).get(n) + "*" + "x_" + i );
+                    if(i < machines-1) myWriter.write(" + ");
+                    n++;
                 }
+                myWriter.write(" >=1");
 
 
                 myWriter.close(); //close filewriter
