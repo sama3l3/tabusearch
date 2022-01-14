@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="tab:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/tab_jar</output-path>
+    <root id="archive" name="tab.jar">
+      <element id="module-output" name="tabu" />
+    </root>
+  </artifact>
+</component>

@@ -109,13 +109,18 @@ public class Read {
                 funzione subject to
                  */
                 myWriter.write("Subject To\n");
+                int index = 0;
+
                 for(int i : jobs.keySet()) {
-                    int n = 0;
-                    myWriter.write(jobs.get(i).get(n) + "*" + "x_" + i );
+
+                    myWriter.write(jobs.get(i).get(index) + "*" + "x_" + i );
+
                     if(i < machines-1) myWriter.write(" + ");
-                    n++;
+
+                    if (index <= 1) index++;
                 }
-                myWriter.write(" >=1");
+
+                myWriter.write(" >=1 ");
 
 
                 myWriter.close(); //close filewriter
