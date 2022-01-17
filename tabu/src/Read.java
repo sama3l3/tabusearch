@@ -11,10 +11,11 @@ public class Read {
             e.printStackTrace();
         }
     }
-
-
     private HashMap<Integer, List<Integer>> jobs= new LinkedHashMap<>();
-
+    public void initList(HashMap<Integer, List<Integer>> job,int key){
+        List<Integer> empty= new ArrayList<>();
+        job.put(key,empty);
+    }
     private int lines = 0;
     private int machines = 0;
     private int n = 0;
@@ -68,30 +69,29 @@ public class Read {
                 f.readLine();
 
                 for(int i=0;i<lines;i++) {
-
                     s = f.readLine();
                     String[] str = s.split("\t+");
                     int key;
-                    int value;
-
+                    int time;
+                    List<Integer> l= new ArrayList<>();
                     for (int j = 1; j < str.length; j += 2) {
-
-                        List<Integer> l = new ArrayList<>();
+                        time=Integer.parseInt(str[j+1]);
                         key=Integer.parseInt(str[j]);
-                        value=Integer.parseInt(str[j+1]);
-
-                        if(!jobs.containsKey(key)) {
-                            l.add(value);
-                            jobs.put(key, l);
-                        }
-                        else{
-                            jobs.get(key).add(value);
-                        }
+                        l.add(time);
+                        if(i==0)
+                            initList(jobs,key);
+                    }
+                    int min=Collections.min(l);
+                    for(int j=0;j<l.size();j++){
+                        if(l.get(j)== min)
+                            jobs.get(j).add(min);
+                        else
+                            jobs.get(j).add(0);
                     }
                 }
-
                 for (int i : jobs.keySet()) {
                     System.out.println("machine " + i);
+
                     System.out.println(jobs.get(i).toString());
                     System.out.println("********************************************************************************************************************************************************************************************************************************************************************************");
 
