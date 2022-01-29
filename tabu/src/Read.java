@@ -65,7 +65,7 @@ public class Read {
                 n = Integer.parseInt(ss[2]) * machines * lines;
 
                 System.out.println("total jobs: " + n);
-                myWriter.write("Minimize\n");
+                myWriter.write("Minimize R\n");
                 f.readLine();
 
                 for(int i=0;i<lines;i++) {
@@ -82,9 +82,13 @@ public class Read {
                             initList(jobs,key);
                     }
                     int min=Collections.min(l);
+                    boolean used = false;
+
                     for(int j=0;j<l.size();j++){
-                        if(l.get(j)== min)
+                        if(l.get(j)== min && !used) {
                             jobs.get(j).add(min);
+                            used = true;  //per risolvere ripetizioni di job nelle altre macchine
+                        }
                         else
                             jobs.get(j).add(0);
                     }

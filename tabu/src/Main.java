@@ -16,8 +16,6 @@ public class Main extends JFrame {
     private static final JFrame f=new JFrame("Tabu Search Algorithm");
     private static final JButton b = new JButton("Calcola Ottimo");
     private static final JButton filechooser = new JButton("Scegli file ...");
-    private static final JCheckBox max = new JCheckBox("Max");
-    private static final JCheckBox min = new JCheckBox("Min");
     private static final JFileChooser chooser = new JFileChooser(String.valueOf(path));
 
 
@@ -28,8 +26,6 @@ public class Main extends JFrame {
          */
         b.setBounds(100, 200, 150, 40);
         filechooser.setBounds(100,50,150, 40);
-        min.setBounds(80, 250 , 50, 50);
-        max.setBounds(220, 250 , 50, 50);
 
         /*
         aggiunti componenti al JFrame
@@ -37,8 +33,6 @@ public class Main extends JFrame {
         f.add(filechooser);
         f.add(b);
         f.setSize(350,350);
-        f.add(min);
-        f.add(max);
 
         /*
         layout settato a null e reso visibile il frame
