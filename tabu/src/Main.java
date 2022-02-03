@@ -54,7 +54,8 @@ public class Main extends JFrame {
         b.addActionListener(e -> {
             r.read(file.getPath());
             TabuSearch t= new TabuSearch(r.getJobs());
-            t.localopt();
+            //mettere condizione di stop
+                t.localopt();
             try {
                 String str = System.getProperty("os.name").toLowerCase();
 
